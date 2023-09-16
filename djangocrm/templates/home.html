@@ -2,6 +2,36 @@
 
 {% block content %}
 
-<h1>Awdrey here!!!</h1>
+<div class="col-md-6 offset-md-3">
+
+    {% if user.is_authenticated %}
+
+    <h1 class="mt-5">Hello eorld</h1>
+
+    {% else %}
+
+    <h1 class="mt-5">Login</h1>
+
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <br />
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" required class="form-control" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" required class="form-control">
+            </div>
+            <br />
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </form>
+
+    </form>
+
+</div>
+
+{% endif %}
 
 {% endblock %}
